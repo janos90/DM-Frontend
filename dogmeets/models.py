@@ -22,4 +22,3 @@ class Activity(models.Model):
     startTime = models.DateField()
     users = models.ManyToManyField(User)
     dogs = models.ManyToManyField(Dog)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
