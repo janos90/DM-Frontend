@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from dogmeets.forms import DogForm
+from dogmeets.forms import DogForm, ActivityForm
 from dogmeets.models import Dog, Activity
 
 
@@ -34,23 +34,28 @@ class DeleteDogView(DeleteView):
     template_name = 'delete_dog.html'
     success_url = reverse_lazy('dogs-list')
 
-class ActivityListView(ListView):
+
+class ActivitiesListView(ListView):
     model = Activity
     template_name = 'activities.html'
+
 
 class ActivityDetailView(DetailView):
     model = Activity
     template_name = 'activity_detail.html'
+
 
 class AddActivityView(CreateView):
     model = Activity
     template_name = 'add_activity.html'
     form_class = ActivityForm
 
+
 class UpdateActivityView(UpdateView):
     model = Activity
     template_name = 'update_activity.html'
     form_class = ActivityForm
+
 
 class DeleteActivityView(DeleteView):
     model = Activity
