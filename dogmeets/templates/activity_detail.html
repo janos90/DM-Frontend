@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ activity.name }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ activity.name }}</h1>
+
+    <hr>
+    <br/>
+    {% if user.is_authenticated %}
+        - <a href="{% url 'edit-activity' activity.pk %}" class="btn btn-secondary">Edit</a>
+        - <a href="{% url 'delete-activity' activity.pk %}" class="btn btn-secondary">Delete</a>
+    {% endif %}
+{% endblock %}

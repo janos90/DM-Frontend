@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ dog.name }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ dog.name }}</h1>
+    <small>
+        Owned by: {{ dog.owner.first_name }} {{ dog.owner.last_name }}
+    </small><br/>>
+    <hr>
+    <br/>
+    {% if user.is_authenticated %}
+        - <a href="{% url 'edit-dog' dog.pk %}" class="btn btn-secondary">Edit</a>
+        - <a href="{% url 'delete-dog' dog.pk %}" class="btn btn-secondary">Delete</a>
+    {% endif %}
+{% endblock %}

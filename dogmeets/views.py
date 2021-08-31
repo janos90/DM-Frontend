@@ -53,7 +53,7 @@ class AddActivityView(CreateView):
 
 class UpdateActivityView(UpdateView):
     model = Activity
-    template_name = 'update_activity.html'
+    template_name = 'edit_activity.html'
     form_class = ActivityForm
 
 
