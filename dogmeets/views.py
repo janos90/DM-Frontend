@@ -25,7 +25,7 @@ class AddDogView(CreateView):
 
 class UpdateDogView(UpdateView):
     model = Dog
-    template_name = 'update_post.html'
+    template_name = 'edit_dog.html'
     form_class = DogForm
 
 

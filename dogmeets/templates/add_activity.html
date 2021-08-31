@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Activity{% endblock %}
+
+{% block content %}
+<h1>Add Activity</h1>
+        {% if user.is_authenticated %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Add Activity</button>
+</form>
+        {% else %}
+        <h2>You need to log in to view this page</h2>
+    {% endif %}
+
+
+{% endblock %}
