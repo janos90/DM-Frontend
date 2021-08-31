@@ -1,15 +1,15 @@
 {% block title %}Delete {{ post.title }}{% endblock %}
 
 {% block content %}
-<h1>Delete Post</h1>
+<h1>Remove Dog</h1>
     {% if user.is_authenticated %}
 
 <form method="post">
     {% csrf_token %}
     <strong>
-        Are you Sure you want to delete {{ post.title }}?
+        Are you Sure you want to remove {{ dog.name }}?
     </strong>
-    <button>Delete Post</button>
+    <button>Remove Dog</button>
     <button>Cancel</button>
 </form>
     {% else %}
