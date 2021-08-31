@@ -33,3 +33,26 @@ class DeleteDogView(DeleteView):
     model = Dog
     template_name = 'delete_dog.html'
     success_url = reverse_lazy('dogs-list')
+
+class ActivityListView(ListView):
+    model = Activity
+    template_name = 'activities.html'
+
+class ActivityDetailView(DetailView):
+    model = Activity
+    template_name = 'activity_detail.html'
+
+class AddActivityView(CreateView):
+    model = Activity
+    template_name = 'add_activity.html'
+    form_class = ActivityForm
+
+class UpdateActivityView(UpdateView):
+    model = Activity
+    template_name = 'update_activity.html'
+    form_class = ActivityForm
+
+class DeleteActivityView(DeleteView):
+    model = Activity
+    template_name = 'delete_activity.html'
+    success_url = reverse_lazy('dogs-list')
