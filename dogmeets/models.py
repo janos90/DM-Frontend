@@ -20,5 +20,6 @@ class Activity(models.Model):
     name = models.CharField(max_length=255)
     creationDate = models.DateField(auto_now_add=True)
     startTime = models.DateField()
+    location = models.CharField(max_length=255)
     users = models.ManyToManyField(User)
     dogs = models.ManyToManyField(Dog)

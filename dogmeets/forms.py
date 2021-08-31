@@ -1,6 +1,6 @@
-from django.forms import ModelForm, TextInput, Select, Textarea, NumberInput, DateInput
+from django.forms import ModelForm, TextInput, Select, NumberInput, DateInput, SelectMultiple
 
-from dogmeets.models import Dog
+from dogmeets.models import Dog, Activity
 
 
 class DogForm(ModelForm):
@@ -15,4 +15,18 @@ class DogForm(ModelForm):
             'weight': NumberInput(attrs={'class': 'form-control'}),
             'birthday': DateInput(attrs={'class': 'form-control'}),
             'owner': Select(attrs={'class': 'form-control'})
+        }
+
+
+class ActivityForm(ModelForm):
+    class Meta:
+        model = Activity
+        fields = ('name', 'startTime', 'location', 'users', 'dogs')
+
+        widgets = {
+            'name': TextInput(attrs={'class': 'form-control'}),
+            'location': TextInput(attrs={'class': 'form-control'}),
+            'users': SelectMultiple(attrs={'class': 'form-control'}),
+            'dogs': SelectMultiple(attrs={'class': 'form-control'}),
+            'startTime': DateInput(attrs={'class': 'form-control'})
         }
