@@ -11,6 +11,7 @@ class Dog(models.Model):
     birthday = models.DateField()
     anniversary = models.DateField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self):
         return self.name + " " + self.breed
