@@ -1,8 +1,10 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
 from .views import DogsListView, DogDetailView, AddDogView, UpdateDogView, DeleteDogView, ActivitiesListView, ActivityDetailView, AddActivityView, UpdateActivityView, DeleteActivityView
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='home.html'),  name='home'),
     path('dogs', DogsListView.as_view(), name='dog-list'),
     path('dog/<int:pk>', DogDetailView.as_view(), name='dog-detail'),
     path('dog/add', AddDogView.as_view(), name='add-dog'),
