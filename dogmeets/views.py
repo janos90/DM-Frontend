@@ -32,7 +32,7 @@ class UpdateDogView(UpdateView):
 class DeleteDogView(DeleteView):
     model = Dog
     template_name = 'delete_dog.html'
-    success_url = reverse_lazy('dogs-list')
+    success_url = reverse_lazy('dog-list')
 
 
 class ActivitiesListView(ListView):

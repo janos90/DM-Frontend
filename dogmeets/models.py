@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-
 # Create your models here.
+from django.urls import reverse
+
+
 class Dog(models.Model):
     name = models.CharField(max_length=255)
     breed = models.CharField(max_length=255)
@@ -16,6 +18,9 @@ class Dog(models.Model):
     def __str__(self):
         return self.name + " " + self.breed
 
+    def get_absolute_url(self):
+        return reverse('dog-detail', args=(str(self.id)))
+
 
 class Activity(models.Model):
     name = models.CharField(max_length=255)
@@ -24,3 +29,6 @@ class Activity(models.Model):
     location = models.CharField(max_length=255)
     users = models.ManyToManyField(User)
     dogs = models.ManyToManyField(Dog)
+
+    def get_absolute_url(self):
+        return reverse('activity-detail', args=(str(self.id)))

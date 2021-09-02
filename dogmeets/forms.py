@@ -3,10 +3,14 @@ from django.forms import ModelForm, TextInput, Select, NumberInput, DateInput, S
 from dogmeets.models import Dog, Activity
 
 
+class DateInput(DateInput):
+    input_type = 'date'
+
+
 class DogForm(ModelForm):
     class Meta:
         model = Dog
-        fields = ('name', 'breed', 'height', 'weight', 'birthday', 'owner')
+        fields = ('name', 'breed', 'height', 'weight', 'birthday', 'owner', 'image')
 
         widgets = {
             'name': TextInput(attrs={'class': 'form-control'}),
