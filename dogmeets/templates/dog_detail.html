@@ -6,11 +6,26 @@
     <h1>{{ dog.name }}</h1>
     <small>
         Owned by: {{ dog.owner.first_name }} {{ dog.owner.last_name }}
-    </small><br/>>
+    </small><br/>
     <hr>
+    <div class="profile-picture-container">
+        {% if dog.image %}
+            <img src="{{ dog.image.url }}" class="profile-picture" />
+        {% else %}
+            <img src="" class="profile-picture" />
+        {% endif %}
+    </div>
+    <br/>
+    <h2>About {{ dog.name }}</h2>
+    <div>
+        <p>
+            {{ dog.descrption }}
+        </p>
+    </div>
+
     <br/>
     {% if user.is_authenticated %}
-        - <a href="{% url 'edit-dog' dog.pk %}" class="btn btn-secondary">Edit</a>
-        - <a href="{% url 'delete-dog' dog.pk %}" class="btn btn-secondary">Delete</a>
+        <a href="{% url 'edit-dog' dog.pk %}" class="btn btn-secondary">Edit</a>
+        <a href="{% url 'delete-dog' dog.pk %}" class="btn btn-secondary">Delete</a>
     {% endif %}
 {% endblock %}
