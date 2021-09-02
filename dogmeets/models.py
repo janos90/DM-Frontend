@@ -5,6 +5,16 @@ from django.db import models
 from django.urls import reverse
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
+
+
+
 class Dog(models.Model):
     name = models.CharField(max_length=255)
     breed = models.CharField(max_length=255)
