@@ -47,20 +47,21 @@
                     </h5>
                     <p class="card-text">
                         <small class="text-muted">
+                        <a href="{% url 'show_profile' dog.owner.profile.id %}">Profile </a>
                             {% if dog.owner.profile.website_url %}
-                                <a href="{{ dog.owner.profile.website_url }}">Website </a>|
+                                | <a href="{{ dog.owner.profile.website_url }}">Website </a>
                             {% endif %}
                             {% if dog.owner.profile.facebook_url %}
-                                <a href="{{ dog.owner.profile.facebook_url }}">Facebook </a>|
+                                | <a href="{{ dog.owner.profile.facebook_url }}">Facebook </a>|
                             {% endif %}
                             {% if dog.owner.profile.instagram_url %}
-                                <a href="{{ dog.owner.profile.instagram_url }}">Instagram </a>|
+                                | <a href="{{ dog.owner.profile.instagram_url }}">Instagram </a>|
                             {% endif %}
                             {% if dog.owner.profile.twitter_url %}
-                                <a href="{{ dog.owner.profile.twitter_url }}">Twitter </a>|
+                                | <a href="{{ dog.owner.profile.twitter_url }}">Twitter </a>|
                             {% endif %}
                             {% if dog.owner.profile.pinterest_url %}
-                                <a href="{{ dog.owner.profile.pinterest_url }}">Pinterest </a>
+                                | <a href="{{ dog.owner.profile.pinterest_url }}">Pinterest </a>
                             {% endif %}
                         </small>
                     </p>
