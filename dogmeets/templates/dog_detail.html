@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ dog.name }}{% endblock %}
 
 {% block content %}
@@ -10,9 +11,11 @@
     <hr>
     <div class="profile-picture-container">
         {% if dog.image %}
-            <img src="{{ dog.image.url }}" class="profile-picture" />
+            <img src="{{ dog.image.url }}"class="img-fluid rounded-start"
+                         alt="Picture of {{ dog.name }}" style="max-width: 100px;
+                         max-height: 100px" />
         {% else %}
-            <img src="" class="profile-picture" />
+            <img src=""/>
         {% endif %}
     </div>
     <br/>
@@ -22,8 +25,53 @@
             {{ dog.descrption }}
         </p>
     </div>
-
     <br/>
+    <br/>
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-2">
+                {% if dog.owner.profile.image %}
+                    <img src="{{ dog.owner.profile.image.url }}" class="img-fluid rounded-start"
+                         alt="Picture of {{ dog.owner.first_name }} {{ dog.owner.last_name }}" style="max-width: 200px;
+                         max-height: 200px">
+                {% else %}
+                    <img src="{% static 'dogmeets/images/default_profile.png' %}" class="img-fluid rounded-start"
+                         alt="Picture of {{ dog.owner.first_name }} {{ dog.owner.last_name }}" style="max-width: 200px;
+                         max-height: 200px">
+                {% endif %}
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        About {{ dog.owner.first_name }} {{ dog.owner.last_name }}
+                    </h5>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            {% if dog.owner.profile.website_url %}
+                                <a href="{{ dog.owner.profile.website_url }}">Website </a>|
+                            {% endif %}
+                            {% if dog.owner.profile.facebook_url %}
+                                <a href="{{ dog.owner.profile.facebook_url }}">Facebook </a>|
+                            {% endif %}
+                            {% if dog.owner.profile.instagram_url %}
+                                <a href="{{ dog.owner.profile.instagram_url }}">Instagram </a>|
+                            {% endif %}
+                            {% if dog.owner.profile.twitter_url %}
+                                <a href="{{ dog.owner.profile.twitter_url }}">Twitter </a>|
+                            {% endif %}
+                            {% if dog.owner.profile.pinterest_url %}
+                                <a href="{{ dog.owner.profile.pinterest_url }}">Pinterest </a>
+                            {% endif %}
+                        </small>
+                    </p>
+                    <p class="card-text">
+                        {{ dog.owner.profile.bio }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% if user.is_authenticated %}
         <a href="{% url 'edit-dog' dog.pk %}" class="btn btn-secondary">Edit</a>
         <a href="{% url 'delete-dog' dog.pk %}" class="btn btn-secondary">Delete</a>
