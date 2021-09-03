@@ -1,16 +1,17 @@
-from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView
-
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import UserChangeForm
+from django.urls import reverse_lazy
+from .forms import SignUpForm, PasswordChangingForm, EditSettingsForm, ProfilePageForm
 from dogmeets.models import Profile
-from members.forms import SignUpForm, PasswordChangingForm, EditSettingsForm, ProfilePageForm
 
 
 class CreateProfilePageView(CreateView):
     model = Profile
-    form_class = ProfilePageForm
+    # form_class = ProfilePageForm
     template_name = 'registration/create-user-profile.html'
+    fields = '__all__'
 
     def form_valid(self, form):
         form.instance.user = self.request.user

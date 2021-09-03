@@ -9,7 +9,7 @@ from dogmeets.models import Profile
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url')
+        fields = ('bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url')
 
         widgets = {
             'bio': Textarea(attrs={'class': 'form-control'}),
