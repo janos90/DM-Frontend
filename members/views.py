@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView
 
 from dogmeets.models import Profile
-from members.forms import SignUpForm, EditProfileForm, PasswordChangingForm
+from members.forms import SignUpForm, PasswordChangingForm, EditSettingsForm
 
 
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'user-profile.html'
-    
+
     def get_context_data(self, *args, **kwargs):
         users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
@@ -30,9 +30,9 @@ def password_success(request):
     return render(request, 'password_success.html', {})
 
 
-class UserProfileView(UpdateView):
-    form_class = EditProfileForm
-    template_name = 'edit-profile.html'
+class UserSettingsView(UpdateView):
+    form_class = EditSettingsForm
+    template_name = 'edit-settings.html'
     success_url = reverse_lazy('home')
 
     def get_object(self):
@@ -42,3 +42,11 @@ class UserProfileView(UpdateView):
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
     success_url = reverse_lazy('password_success')
+
+
+class EditProfilePageView(UpdateView):
+    model = Profile
+    template_name = 'edit_profile_page.html'
+    fields = ['image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url']
+    success_url = reverse_lazy('login')
+
