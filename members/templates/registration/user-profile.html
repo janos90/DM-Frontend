@@ -18,5 +18,5 @@
                 {% endif %}
 
     {{ page_user.user.first_name }}
-    <p>{{ page_user.bio }}</p>
+    <p>{{ page_user.bio|safe }}</p>
 {% endblock %}

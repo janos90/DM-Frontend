@@ -8,6 +8,7 @@
         {% if user.id == profile.user.id %}
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form.as_p }}
                 <button>Update Profile Page</button>
             </form>

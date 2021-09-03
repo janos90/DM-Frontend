@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 from django.urls import reverse
@@ -8,7 +9,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=True, upload_to="images/profile/")
-    bio = models.TextField()
+    bio = RichTextField(blank=True, null=True)
     facebook_url = models.CharField(max_length=255, null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)
     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
