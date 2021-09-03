@@ -4,7 +4,7 @@ from .views import UserRegisterView, UserSettingsView, PasswordsChangeView, Show
 from . import views
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
-    path('password/', PasswordsChangeView.as_view(template_name='change-password.html')),
+    path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html')),
     path('password_success/', views.password_success, name='password_success'),
     path('settings/', UserSettingsView.as_view(), name='settings'),
     path('<int:pk>/profile/', ShowProfilePageView.as_view(), name='show_profile'),
