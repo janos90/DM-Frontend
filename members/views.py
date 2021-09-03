@@ -9,9 +9,8 @@ from dogmeets.models import Profile
 
 class CreateProfilePageView(CreateView):
     model = Profile
-    # form_class = ProfilePageForm
+    form_class = ProfilePageForm
     template_name = 'registration/create-user-profile.html'
-    fields = '__all__'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
