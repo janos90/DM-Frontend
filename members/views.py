@@ -4,7 +4,17 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView
 
 from dogmeets.models import Profile
-from members.forms import SignUpForm, PasswordChangingForm, EditSettingsForm
+from members.forms import SignUpForm, PasswordChangingForm, EditSettingsForm, ProfilePageForm
+
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class = ProfilePageForm
+    template_name = 'create-user-profile.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class ShowProfilePageView(DetailView):
@@ -49,4 +59,3 @@ class EditProfilePageView(UpdateView):
     template_name = 'edit_profile_page.html'
     fields = ['image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url']
     success_url = reverse_lazy('login')
-

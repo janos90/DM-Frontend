@@ -1,6 +1,24 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from django.forms import TextInput, Textarea
+
+from dogmeets.models import Profile
+
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url')
+
+        widgets = {
+            'bio': Textarea(attrs={'class': 'form-control'}),
+            'facebook_url': TextInput(attrs={'class': 'form-control'}),
+            'website_url': TextInput(attrs={'class': 'form-control'}),
+            'pinterest_url': TextInput(attrs={'class': 'form-control'}),
+            'twitter_url': TextInput(attrs={'class': 'form-control'}),
+            'instagram_url': TextInput(attrs={'class': 'form-control'}),
+        }
 
 
 class SignUpForm(UserCreationForm):
